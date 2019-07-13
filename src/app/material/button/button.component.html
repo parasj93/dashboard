@@ -1,0 +1,165 @@
+<div class="mat-display-1">Buttons</div>
+<button mat-button>Button</button>
+<button mat-raised-button>Raised Button</button>
+<button mat-flat-button>Flat Button</button>
+<button mat-stroked-button>Stroked Button</button>
+
+<button mat-fab>Fab Button</button>
+<button mat-mini-fab>MiniFab Button</button>
+
+<button color="primary" mat-button>Primary Button</button>
+<button color="accent" disableRipple mat-button>Accent Button</button>
+<button color="warn" mat-button>Warning Button</button>
+
+<button color="primary" mat-raised-button>Raised Button</button>
+<button color="accent" mat-raised-button>Raised Button</button>
+<button color="warn" mat-raised-button>Raised Button</button>
+
+
+<div>
+    <div class="mat-display-1">Button Toggle </div>
+    <mat-button-toggle #toggleBtn checked disabled disableRipple>Toggle</mat-button-toggle>
+    {{toggleBtn.checked}}
+</div>
+<div>
+    <div class="mat-display-1">Button Toggle Group</div>
+    <mat-button-toggle-group #toggleGroup="matButtonToggleGroup" multiple>
+        <mat-button-toggle value="Angular">Angular</mat-button-toggle>
+        <mat-button-toggle value="React">React</mat-button-toggle>
+        <mat-button-toggle value="Vue">Vue</mat-button-toggle>
+    </mat-button-toggle-group>
+    {{toggleGroup.value}}
+</div>
+
+<div class="mat-display-1">Material Icon</div>
+<div>
+    <mat-icon color="primary">grade</mat-icon>
+</div>
+
+<div class="mat-display-1">
+    <div>
+        <span [matBadge]="notification" [matBadgeHidden]="notification === 0" matBadgeColor="warn"
+            matBadgePosition="above before" matBadgeSize="small">Hey Notification</span>
+    </div>
+    <div>
+        <span matBadge="4" matBadgePosition="above after" matBadgeOverlap="false" matBadgeSize="medium">Hey
+            Notification</span>
+    </div>
+    <div>
+        <span matBadge="4" matBadgePosition="below before" matBadgeSize="large">Hey Notification</span>
+    </div>
+    <div>
+        <span matBadge="4" matBadgePosition="below after">Hey Notification</span>
+    </div>
+
+    <div class="mat-display-7">
+        MatProgresSpinner
+        <mat-progress-spinner value="50"></mat-progress-spinner>
+        <mat-spinner color="warn"></mat-spinner>
+    </div>
+
+    <div class="mat-display-7">
+        MatProgresBar
+        <div>
+            MatProgresBar Indeterminate
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+
+        <div>
+            MatProgressBar Determinate
+            <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
+        </div>
+
+        <div>
+            MatProgressBar Buffer
+            <mat-progress-bar mode="buffer"></mat-progress-bar>
+        </div>
+        <div>
+            MatProgressBar query
+            <mat-progress-bar mode="query"></mat-progress-bar>
+        </div>
+    </div>
+
+    <div>
+        <span>MatToolBar</span>
+        <mat-toolbar color="warn" class="navbar">
+            <div>Learning</div>
+            <div>
+                <span>Home</span>
+                <span>Home</span>
+                <span>Home</span>
+            </div>
+        </mat-toolbar>
+
+    </div>
+    <div>
+        <span>MatSideNavbar</span>
+        <mat-sidenav-container>
+            mode is side
+            <mat-sidenav [(opened)]="opened" mode="side">
+                SideNav
+            </mat-sidenav>
+            <mat-sidenav-content>
+                main
+                <button mat-button (click)="opened = !opened">Toggle</button>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+        <mat-sidenav-container>
+            mode is over
+            <mat-sidenav [(opened)]="opened" mode="over">
+                SideNav
+            </mat-sidenav>
+            <mat-sidenav-content>
+                main
+                <button mat-button (click)="opened = !opened">Toggle</button>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+        <mat-sidenav-container>
+            mode is push
+            <mat-sidenav #sidenav [(opened)]="opened" mode="push">
+                SideNav
+            </mat-sidenav>
+            <mat-sidenav-content>
+                main
+                <button mat-button (click)="opened = !opened">Toggle</button>
+                <button mat-button (click)="sidenav.open()">Open</button>
+                <button mat-button (click)="sidenav.close()">Close</button>
+
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+
+    </div>
+
+    <div class="mat-display-1">
+        matMenuItems
+        <mat-menu #appmenu="matMenu" xPosition="before" yPosition="above">
+            <ng-template matMenuContent let-name="name1" let-target="target">
+                <button mat-menu-item [matMenuTriggerFor]="submenu">Frontend</button>
+                <button mat-menu-item>backend{{name}}</button>
+                <button mat-menu-item>backend{{target}}</button>
+            </ng-template>
+
+        </mat-menu>
+
+
+        <button mat-button [matMenuTriggerData]="{name1:'parasj',target:'learn new'}" [matMenuTriggerFor]="appmenu">OpenManu</button>
+        <!-- <button mat-button [matMenuTriggerFor]="appmenu">OpenManu</button> -->
+
+        <mat-menu #submenu="matMenu">
+            <button mat-menu-item>Angular</button>
+            <button mat-menu-item>React</button>
+            <button mat-menu-item>Vue</button>
+        </mat-menu>
+    </div>
+</div>
+
+<ng-container *ngTemplateOutlet="greet"></ng-container>
+<hr>
+<ng-container *ngTemplateOutlet="eng; context: myContext"></ng-container>
+<hr>
+<ng-container *ngTemplateOutlet="svk; context: myContext"></ng-container>
+<hr>
+
+<ng-template #greet><span>Hello</span></ng-template>
+<ng-template #eng let-name><span>Hello {{name}}!</span></ng-template>
+<ng-template #svk let-person="localSk"><span>Ahoj {{person}}!</span></ng-template>
